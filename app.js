@@ -1,4 +1,4 @@
-const API_BASE = "https://shop-borrowing-app.onrender.com/api";
+const API_BASE = "https://borrow-money-recreated.onrender.com/api";
 
 const signupForm = document.querySelector("#signupForm");
 const form = document.querySelector("#borrowForm");
