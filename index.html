@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borrow Money</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="is-signup">
+  <section id="signupPage" class="signup-page">
+    <div class="signup-brand">
+      <div class="app-logo large" aria-hidden="true">
+        <span class="logo-roof"></span>
+        <span class="logo-mark">BM</span>
+      </div>
+      <p class="eyebrow">Shop borrow manager</p>
+      <h1>Borrow Money</h1>
+      <p class="address-badge">App address: <span class="appAddress">127.0.0.1:5601</span></p>
+      <p class="brand-copy">Create your shop account and start tracking borrowed items, pending returns, and customer balances.</p>
+    </div>
+
+    <form id="signupForm" class="panel signup-card">
+      <h2>Sign Up</h2>
+
+      <label>
+        Shop name
+        <input id="shopName" type="text" placeholder="Example: Sri Lakshmi Stores" required />
+      </label>
+
+      <label>
+        Owner name
+        <input id="ownerName" type="text" placeholder="Example: Kumar" required />
+      </label>
+
+      <label>
+        Mobile number
+        <input id="signupPhone" type="tel" placeholder="Example: 9876543210" required />
+      </label>
+
+      <label>
+        Email address
+        <input id="signupEmail" type="email" placeholder="Example: shop@example.com" required />
+      </label>
+
+      <label>
+        Password
+        <input id="signupPassword" type="password" minlength="4" placeholder="Minimum 4 characters" required />
+      </label>
+
+      <button class="primary-btn" type="submit">Create account</button>
+    </form>
+  </section>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-row">
+        <div class="app-logo" aria-hidden="true">
+          <span class="logo-roof"></span>
+          <span class="logo-mark">BM</span>
+        </div>
+        <div>
+          <p class="eyebrow" id="shopLabel">Shop ledger</p>
+          <h1>Borrow Money</h1>
+          <p class="address-badge compact">App address: <span class="appAddress">127.0.0.1:5601</span></p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button id="clearDataBtn" class="ghost-btn" type="button">Clear demo data</button>
+        <button id="signOutBtn" class="ghost-btn" type="button">Sign out</button>
+      </div>
+    </header>
+
+    <nav class="app-tabs" aria-label="App sections">
+      <button class="tab-btn active" type="button" data-tab="overview">Overview</button>
+      <button class="tab-btn" type="button" data-tab="money">Credit / Debit</button>
+      <button class="tab-btn" type="button" data-tab="borrowing">Borrowing</button>
+    </nav>
+
+    <section class="stats-grid app-section" data-section="overview" aria-label="Borrowing summary">
+      <article class="stat">
+        <span>Borrowed items</span>
+        <strong id="borrowedCount">0</strong>
+      </article>
+      <article class="stat">
+        <span>Total pending</span>
+        <strong id="pendingAmount">Rs. 0</strong>
+      </article>
+      <article class="stat">
+        <span>Customers</span>
+        <strong id="customerCount">0</strong>
+      </article>
+    </section>
+
+    <section class="stats-grid money-stats app-section" data-section="overview" aria-label="Money summary">
+      <article class="stat credit-stat">
+        <span>Total credit</span>
+        <strong id="creditTotal">Rs. 0</strong>
+      </article>
+      <article class="stat debit-stat">
+        <span>Total debit</span>
+        <strong id="debitTotal">Rs. 0</strong>
+      </article>
+      <article class="stat balance-stat">
+        <span>Cash balance</span>
+        <strong id="cashBalance">Rs. 0</strong>
+      </article>
+    </section>
+
+    <section class="workspace money-workspace app-section" data-section="money">
+      <form id="moneyForm" class="panel">
+        <h2>Add Credit / Debit</h2>
+
+        <label>
+          Entry type
+          <select id="moneyType" required>
+            <option value="credit">Credit money</option>
+            <option value="debit">Debit money</option>
+          </select>
+        </label>
+
+        <label>
+          Amount
+          <input id="moneyAmount" type="number" min="0" step="0.01" placeholder="0" required />
+        </label>
+
+        <label>
+          Date
+          <input id="moneyDate" type="date" required />
+        </label>
+
+        <label>
+          Person / reason
+          <input id="moneyReason" type="text" placeholder="Example: Customer payment" required />
+        </label>
+
+        <label>
+          Notes
+          <textarea id="moneyNotes" rows="3" placeholder="Optional note"></textarea>
+        </label>
+
+        <button class="primary-btn" type="submit">Add money entry</button>
+      </form>
+
+      <section class="panel ledger-panel">
+        <div class="ledger-header">
+          <h2>Credit & Debit Ledger</h2>
+          <input id="moneySearchInput" type="search" placeholder="Search money entries" />
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date / Day</th>
+                <th>Type</th>
+                <th>Reason</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="moneyLedgerBody"></tbody>
+          </table>
+        </div>
+
+        <p id="moneyEmptyState" class="empty-state">No credit or debit entries yet.</p>
+      </section>
+    </section>
+
+    <section class="workspace app-section" data-section="borrowing">
+      <form id="borrowForm" class="panel">
+        <h2>Add Borrow Entry</h2>
+
+        <label>
+          Customer name
+          <input id="customerName" type="text" placeholder="Example: Ravi Kumar" required />
+        </label>
+
+        <label>
+          Phone number
+          <input id="phoneNumber" type="tel" placeholder="Example: 9876543210" />
+        </label>
+
+        <label>
+          Item name
+          <input id="itemName" type="text" placeholder="Example: Rice bag" required />
+        </label>
+
+        <div class="form-row">
+          <label>
+            Quantity
+            <input id="quantity" type="number" min="1" value="1" required />
+          </label>
+
+          <label>
+            Amount
+            <input id="amount" type="number" min="0" step="0.01" placeholder="0" required />
+          </label>
+        </div>
+
+        <label>
+          Due date
+          <input id="dueDate" type="date" />
+        </label>
+
+        <label>
+          Notes
+          <textarea id="notes" rows="3" placeholder="Optional note"></textarea>
+        </label>
+
+        <button class="primary-btn" type="submit">Add entry</button>
+      </form>
+
+      <section class="panel ledger-panel">
+        <div class="ledger-header">
+          <h2>Borrowing Ledger</h2>
+          <input id="searchInput" type="search" placeholder="Search customer, phone, or item" />
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Amount</th>
+                <th>Due</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ledgerBody"></tbody>
+          </table>
+        </div>
+
+        <p id="emptyState" class="empty-state">No borrow entries yet.</p>
+      </section>
+    </section>
+
+    <footer class="developer-footer">
+      <span>Frontend Developer</span>
+      <strong>Borrow Money UI</strong>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

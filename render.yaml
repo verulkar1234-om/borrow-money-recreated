@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: borrow-money-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: CORS_ORIGIN
+        value: https://shopborrowingapp.netlify.app
+      - key: MONGODB_DB
+        value: borrow_money
+      - key: MONGODB_URI
+        value: "mongodb+srv://verulkar1234_db_user:Omg@2502@cluster0.2zj8mk7.mongodb.net/?appName=Cluster0"

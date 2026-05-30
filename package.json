@@ -1,0 +1,16 @@
+{
+  "name": "borrow-money-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Borrow Money shop borrowing app.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "mongodb": "^6.8.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+
