@@ -1,0 +1,40 @@
+{
+  "profile": null,
+  "borrowings": [
+    {
+      "id": "1780233793976-55664883d38ec8",
+      "customerName": "Ravi Kumar",
+      "phoneNumber": "9876543210",
+      "itemName": "Rice bag",
+      "quantity": 1,
+      "amount": 1250,
+      "dueDate": "2026-05-31",
+      "notes": "Regular customer",
+      "returned": false,
+      "createdAt": 1780233793976
+    },
+    {
+      "id": "1780233823958-61cde8ec4036",
+      "customerName": "Test User",
+      "phoneNumber": "1234567890",
+      "itemName": "Widget",
+      "quantity": 2,
+      "amount": 250,
+      "dueDate": "2026-06-30",
+      "notes": "Test entry",
+      "returned": false,
+      "createdAt": 1780233823958
+    }
+  ],
+  "moneyEntries": [
+    {
+      "id": "1780233793976-428bb08a76231",
+      "type": "credit",
+      "amount": 500,
+      "entryDate": "2026-05-31",
+      "reason": "Opening cash",
+      "notes": "Demo money entry",
+      "createdAt": 1780233793976
+    }
+  ]
+}
